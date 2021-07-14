@@ -59,9 +59,8 @@ class _ExampleFormState extends State<ExampleForm> {
                 showVeritical: _showVeritical,
                 context: context,
                 items: items,
-                validator: (value) {
-                  return value == null ? "Error" : null;
-                },
+                validator: (value) =>
+                    value == null ? "Select one of above items" : null,
                 onSaved: (value) {
                   if (mounted) {
                     setState(() {
