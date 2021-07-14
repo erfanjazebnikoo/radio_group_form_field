@@ -1,7 +1,7 @@
 name: radio_group_form_field
-description: A new flutter plugin project.
-version: 0.0.1
-homepage:
+description: We need to make a reusable widget that will display a horizontal list of Radio objects and support validation.
+version: 0.0.2
+homepage: https://github.com/erfanjazebnikoo/radio_group_form_field
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

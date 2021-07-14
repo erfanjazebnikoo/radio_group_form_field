@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:radio_group_form_field/radio_group_form_field.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('radio_group_form_field');
@@ -17,7 +16,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await RadioGroupFormField.platformVersion, '42');
-  });
+  // test('getPlatformVersion', () async {
+  //   expect(await RadioGroupFormField.platformVersion, '42');
+  // });
 }
