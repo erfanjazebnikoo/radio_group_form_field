@@ -1,6 +1,6 @@
 name: radio_group_form_field
 description: We need to make a reusable widget that will display a horizontal list of Radio objects and support validation.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/erfanjazebnikoo/radio_group_form_field
 
 environment:

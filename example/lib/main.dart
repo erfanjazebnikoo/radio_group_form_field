@@ -55,7 +55,6 @@ class _ExampleFormState extends State<ExampleForm> {
               ),
               Divider(),
               RadioGroupFormField(
-                padding: EdgeInsets.all(8),
                 showVeritical: _showVeritical,
                 context: context,
                 items: items,
