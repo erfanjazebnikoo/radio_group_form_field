@@ -9,3 +9,8 @@
 ## 0.0.3
 
 * Implemented example application to use the plugin
+
+## 0.0.4
+
+* Added some comments
+* Removed some unused parameters
