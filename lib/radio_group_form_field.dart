@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class RadioGroupFormField extends FormField<int> {
-  final List<String>? options;
+  final List<String>? items;
 
   final EdgeInsetsGeometry? padding;
+  final bool? showVeritical;
   final TextStyle? titleStyle;
   final ShapeBorder? shape;
   final MouseCursor? mouseCursor;
@@ -21,10 +22,11 @@ class RadioGroupFormField extends FormField<int> {
   RadioGroupFormField({
     Key? key,
     @required BuildContext? context,
-    @required this.options,
+    @required this.items,
     FormFieldSetter? onSaved,
     FormFieldValidator? validator,
     this.padding,
+    this.showVeritical,
     this.titleStyle,
     this.shape,
     this.mouseCursor,
@@ -44,41 +46,34 @@ class RadioGroupFormField extends FormField<int> {
             Widget radio, title;
 
             return ListTile(
-              title: ListView.builder(
-                padding: padding,
-                shrinkWrap: true,
-                itemCount: options!.length,
-                itemBuilder: (context, index) {
-                  radio = Radio<int>(
-                    value: index,
-                    groupValue: state.value,
-                    activeColor: activeColor,
-                    focusColor: focusColor,
-                    focusNode: focusNode,
-                    hoverColor: hoverColor,
-                    materialTapTargetSize: materialTapTargetSize,
-                    mouseCursor: mouseCursor,
-                    onChanged: (value) => state.didChange(value),
-                    visualDensity: visualDensity,
-                  );
-                  title = Text(
-                    options.elementAt(index),
-                    style: titleStyle ?? TextStyle(color: Colors.black),
-                  );
+              title: Wrap(
+                direction: showVeritical! ? Axis.vertical : Axis.horizontal,
+                children: List<Widget>.generate(
+                  items!.length,
+                  (index) {
+                    radio = Radio<int>(
+                      value: index,
+                      groupValue: state.value,
+                      activeColor: activeColor,
+                      focusColor: focusColor,
+                      focusNode: focusNode,
+                      hoverColor: hoverColor,
+                      materialTapTargetSize: materialTapTargetSize,
+                      mouseCursor: mouseCursor,
+                      onChanged: (value) => state.didChange(value),
+                      visualDensity: visualDensity,
+                    );
+                    title = Text(
+                      items.elementAt(index),
+                      style: titleStyle ?? TextStyle(color: Colors.black),
+                    );
 
-                  return ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    trailing: radio,
-                    title: title,
-                    onTap: () {
-                      if (state.value != index) {
-                        state.didChange(index);
-                      } else {
-                        state.didChange(null);
-                      }
-                    },
-                  );
-                },
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [radio, title],
+                    );
+                  },
+                ),
               ),
               subtitle: state.hasError
                   ? Builder(
